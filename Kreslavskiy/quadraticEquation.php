@@ -1,25 +1,30 @@
 <?php
 
 namespace Kreslavskiy;
+
 use core\EquationInterface;
 
-class quadraticEquation extends LinearEquation implements EquationIntresace{
+class QuadraticEquation extends LinearEquation implements EquationInterface{
 
     protected function discriminant($a, $b, $c){
         return pow($b, 2) - 4 * $a * $c;
     }
-    public function quadraticEquation($a, $b, $c){
+    public function solve($a, $b, $c)
+    {
         if ($a == 0) {
             return $this -> linearEquation($b, $c);
         }
         $d = $this -> discriminant($a, $b, $c);
 
+        MyLog::log("It is a quad equation.\n\r");
+
         if ($d == 0) {
             return $this -> x = [(-$b) / 2 * $a];
         }
-        if ($this->d < 0) {
-            throw new Exception('It is impossible to solve the quadratic equation');
+        if ($d < 0) {
+            throw new KreslavskiyException('It is impossible to solve the quadratic equation');
         }
-        return $this -> x = [(-$b - sqrt($this->d)) / (2 * $a), (-$b + sqrt($this->d)) / (2 * $a)];
+
+        return $this -> x = [(-$b - sqrt($d)) / (2 * $a), (-$b + sqrt($d)) / (2 * $a)];
     }
 }
