@@ -13,24 +13,24 @@ require "Kreslavskiy/QuadraticEquation.php";
 require "Kreslavskiy/KreslavskiyException.php";
 
 $solver = new Kreslavskiy\QuadraticEquation();
-$logger = Kreslavskiy\MyLog::Instance();
 
 try {
+    Kreslavskiy\MyLog::log("Version: " . trim(file_get_contents("version")) . "\n");
     echo "Enter 3 numbers: a, b, c.\n\r";
 
     $a = readline("Enter a: \n\r");
     $b = readline("Enter b: \n\r");
     $c = readline("Enter c: \n\r");
 
-    $logger::log("Equation is "."x=".$a."x2+".$b."x+".$c."\n\r");
+    Kreslavskiy\MyLog::log("Equation is "."x=".$a."x2+".$b."x+".$c."\n\r");
 
     $result = $solver->solve($a, $b, $c);
     $str = implode("; ", $result);
 
-    $logger::log("Equation roots: ".$str."\n\r");
+    log("Equation roots: ".$str."\n\r");
 } catch (Kreslavskiy\KreslavskiyException $err) {
     $message = $err->getMessage();
-    $logger::log($message);
+    Kreslavskiy\MyLog::log($message);
 }
 
 Kreslavskiy\MyLog::write();
