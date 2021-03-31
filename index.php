@@ -3,14 +3,7 @@
 ini_set("display_errors", 1);
 error_reporting(-1);
 
-require "core/EquationInterface.php";
-require "core/LogAbstract.php";
-require "core/LogInterface.php";
-
-require "Kreslavskiy/MyLog.php";
-require "Kreslavskiy/LinearEquation.php";
-require "Kreslavskiy/QuadraticEquation.php";
-require "Kreslavskiy/KreslavskiyException.php";
+require_once __DIR__ . "/vendor/autoload.php";
 
 $solver = new Kreslavskiy\QuadraticEquation();
 
@@ -27,7 +20,7 @@ try {
     $result = $solver->solve($a, $b, $c);
     $str = implode("; ", $result);
 
-    log("Equation roots: ".$str."\n\r");
+    Kreslavskiy\MyLog::log("Equation roots: ".$str."\n\r");
 } catch (Kreslavskiy\KreslavskiyException $err) {
     $message = $err->getMessage();
     Kreslavskiy\MyLog::log($message);

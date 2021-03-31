@@ -1,0 +1,21 @@
+{
+    "name": "kres17/egor",
+    "type": "project",
+    "license": "MIT",
+    "scripts": {
+        "post-install-cmd": "git symbolic-ref --short -q HEAD > version"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/kres17/egor-lib.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/rok9ru/trpo-core.git"
+        }
+    ],
+    "require": {
+        "kres17/egor-lib": "^1.0"
+    }
+}
