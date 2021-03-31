@@ -16,6 +16,12 @@ try {
     $c = readline("Enter c: \n\r");
 
     Kreslavskiy\MyLog::log("Equation is "."x=".$a."x2+".$b."x+".$c."\n\r");
+	
+	if ($a === 0) {
+		Kreslavskiy\MyLog::log("It is a linear equation.\n\r");
+	} else {
+		Kreslavskiy\MyLog::log("It is a quad equation.\n\r");
+	}
 
     $result = $solver->solve($a, $b, $c);
     $str = implode("; ", $result);
